@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conecta +</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'midea/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/voluntarios.css' %}">
+    <link rel="stylesheet" href="{% static 'css/caçadores.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'midea/logo.png' %}" alt="Logo Conecta +">
+            </a>
+        </div>
+
+        <div class="menu">
+            <a class="menu-item" href="{% url 'projetos' %}">
+                <i class="nome-menu"></i>
+                <span>Projetos</span>
+            </a>
+            <a class="menu-item" href="{% url 'caçadores' %}">
+                <i class="nome-menu"></i>
+                <span>Caçadores</span>
+            </a>
+            <a class="menu-item" href="{% url 'chat_geral' %}">
+                <i class="nome-menu"></i>
+                <span>Chat Geral</span>
+            </a>
+            <a class="menu-item" href="{% url 'voluntarios' %}">
+                <i class="nome-menu"></i>
+                <span>Voluntários</span>
+            </a>
+            <a class="menu-item" href="{% url 'home' %}">
+                <i class="nome-menu"></i>
+                <span>Divulga +</span>
+            </a>
+        </div>
+        <div></div>
+    </nav>
+
+    {% block conteudo %}
+    {% endblock %}
+
+</body>
+</html>

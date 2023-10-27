@@ -1,0 +1,36 @@
+{% extends 'paginas/base.html' %} 
+{% block conteudo %}
+
+<div class="body-voluntarios">
+    <h1>Voluntários:</h1>
+    <h1>Lista de Voluntários</h1>
+
+    <table class="volunteers-table" >
+        <tbody>
+            {% if voluntarios %}
+                {% for voluntario in voluntarios %}
+                    <tr>
+                        <td class="nome-voluntario">{{ voluntario.nome }}</td>
+                        <td class="status-voluntario">{{ voluntario.status }}</td>
+                        <td class="localizacao-voluntario">{{ voluntario.cidade }}, {{ voluntario.estado }}</td>
+                        
+                        <td>
+                            <div class="availability">
+                                {% if voluntario.disponivel %}
+                                    <span class="dot green"></span>
+                                {% else %}
+                                    <span class="dot red"></span>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td class="mensagem-vazio">😔 Nenhum voluntário encontrado. 😔</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

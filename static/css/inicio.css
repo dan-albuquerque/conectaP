@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    transition: 0.2s linear;
+    text-transform: capitalize;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #23293b;
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.logo_inicio {
+    display: block;
+    margin: 0 auto;
+    max-width: 300px;
+    max-height: 10px; 
+    position: relative;
+    transform: translate(110px, 125px);
+    text-align: center;
+    padding: 10px;
+}
+
+.placement_botoes {
+    width: 600px; /* Largura do quadrado */
+    height: 300px; /* Altura do quadrado */
+    transform: translate(-500px, 250px);
+    background-color: #d85b40; /* Cor de fundo do quadrado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.placement_botoes button {
+    margin: 10px;
+    flex: 1;
+    width: 50%; 
+    height: 300px; 
+}
+
+#botaoLogin, #botaoCadastro {
+    background-color: #a51d98;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px 0; 
+    width: 100px; 
+    height: 40px; 
+    transform: translate(-5px, 100px);
+}

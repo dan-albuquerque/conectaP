@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.texto{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    padding: 1rem;
+}
+
+
+div.texto h1{
+    align-items: center;
+    padding: 1rem;
+    text-transform: none;
+}
+
+div.texto p{
+    align-items: center;
+    padding: 1rem;
+    text-transform: none;
+}

@@ -1,0 +1,80 @@
+.body-voluntarios{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    padding: 1rem;
+}
+
+div.body-voluntarios h1{
+    align-items: center;
+    padding: 1rem;
+    text-transform: none;
+}
+
+.mensagem-vazio{
+    
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: none;
+}
+
+.nome-voluntario {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 5px;
+    margin-left: 10px;
+}
+
+.status-voluntario {
+    font-size: 1.1rem;
+    margin: 5px;
+}
+
+.localizacao-voluntario {
+    font-size: 1.1rem;
+    margin: 5px;
+}
+
+.dot {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 5px;
+    margin-right: 10px;
+}
+
+.volunteers-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+}
+
+table.volunteers-table td {
+    padding: 1.25rem 2rem;
+    background: black;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+
+    &:first-child{
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+        border-left: 1px solid #fff;
+    }
+
+    &:last-child{
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        border-right: 1px solid #fff;
+    }
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}

@@ -1,0 +1,35 @@
+{% extends 'paginas/base.html' %} 
+{% block conteudo %}
+
+<div class="body-caçadores">
+    <h1>Caçadores:</h1>
+    <h1>Lista de Caçadores</h1>
+
+    <table class="caçadores-table" >
+        <tbody>
+            {% if cacadores %}
+                {% for cacador in cacadores %}
+                    <tr>
+                        <td class="nome-caçadores">{{ cacador.nome }}</td>
+                        <td class="status-caçadores">{{ cacador.tarefa }}</td>
+                        
+                        <td>
+                            <div class="availability-caçadores">
+                                {% if cacador.disponivel %}
+                                    <span class="dot green"></span>
+                                {% else %}
+                                    <span class="dot red"></span>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td class="mensagem-vazio">😔 Nenhum voluntário encontrado. 😔</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
