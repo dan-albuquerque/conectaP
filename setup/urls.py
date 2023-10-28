@@ -11,4 +11,5 @@ urlpatterns = [
     path('cadastro/', views.cadastro, name='cadastro'),
     path('voluntarios/', views.voluntarios, name='voluntarios'),
     path('chat_geral/', views.chat_geral, name='chat_geral'),
+    path('login/', views.login_user, name = 'login'),
 ]

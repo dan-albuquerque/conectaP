@@ -1,0 +1,26 @@
+.placeholder_cadastro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 45vh;
+    width: 600px; 
+    height: 300px; 
+    transform: translate(-500px, 250px);
+}
+
+.plano-fundo {
+    background-color: #d85b40;
+    width: 400px; /* Mudei a largura para 400px para fazer um quadrado. */
+    height: 400px;
+    display: inline-block;
+    margin: 15px; /* Usei a propriedade 'margin' para definir as margens em todas as direções. */
+    border: 5px solid #000000;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+  
+.cadastro_palavras{
+    color: #b83476;
+}

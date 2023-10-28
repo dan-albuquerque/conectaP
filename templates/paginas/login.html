@@ -26,39 +26,25 @@
               
               <!-- Input do Nome -->
               <div class="cadastro_palavras">
-                <label for="{{form.username.id_for_label}}"><b>Username</b></label>
-                <div class="col-sm-4">
-                  {{form.username}}
-                </div>
-              </div>
-        
-              <!-- Input do Email -->
-              <div class="cadastro_palavras">
-                <label for="{{form.email.id_for_label}}"><b>Email</b></label>
-                <div class="col-sm-4">
-                  {{form.email}}
-                </div>
+                <label for="{{form.username.id_for_label}}"><b>Usuário</b></label>
+                <div>
+                    <input type="text"  name="username" placeholder="Usuário">
+                  </div>
               </div>
         
               <!-- Input da Senha1 -->
               <div class="cadastro_palavras">
-                <label for="{{form.password1.id_for_label}}" ><b>Password</b></label>
-                <div class="col-sm-4">
-                  {{form.password1}}
+                <label for="{{form.password1.id_for_label}}" ><b>Senha</b></label>
+                <div>
+                    <input type="password" class="form-control mb-3" name="password" placeholder="********">
                 </div>
               </div>
         
-              <!-- Input da Senha2 -->
-              <div class="cadastro_palavras">
-                <label for="{{form.password2.id_for_label}}" ><b>Repeat Password</b></label>
-                <div class="col-sm-4">
-                  {{form.password2}}
-                </div>
-              </div>
+             
         
-              <!-- Botão de Cadastro -->
+              <!-- Botão de Login -->
                 <div class="col-auto">
-                  <button type="submit" id="botaoLogin" class="placement_botoes" >Cadastrar</button>
+                  <button type="submit" id="botaoLogin" class="placement_botoes" >Entrar</button>
                 </div>
 
                 <div class="col-auto">

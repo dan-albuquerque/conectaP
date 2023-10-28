@@ -31,10 +31,10 @@ body {
 }
 
 .placement_botoes {
-    width: 600px; /* Largura do quadrado */
-    height: 300px; /* Altura do quadrado */
+    width: 600px; 
+    height: 300px; 
     transform: translate(-500px, 250px);
-    background-color: #d85b40; /* Cor de fundo do quadrado */
+    background-color: #d85b40; 
     display: flex;
     flex-direction: column;
     align-items: center;
