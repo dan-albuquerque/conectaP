@@ -1,27 +1,30 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponse 
 from .forms import CadastroForm
 from .models import Voluntario,Usuario
 from .models import Cacador
 
-
 def teste(request):
-    
     return render(request, 'paginas/teste.html')
 
+@login_required(login_url='/login/')
 def home(request):
     return render(request, 'paginas/home.html')
 
+@login_required(login_url='/login/')
 def projetos(request):
     return render(request, 'paginas/projetos.html')
 
+@login_required(login_url='/login/')
 def cacadores(request):
     cacadores = Cacador.objects.all()
     context = {'cacadores': cacadores}
     return render(request, 'paginas/caçadores.html', context)
 
+@login_required(login_url='/login/')
 def inicio(request):
     return render(request, 'paginas/inicio.html')
 
@@ -42,11 +45,13 @@ def cadastro(request):
         'form': form
     })
 
+@login_required(login_url='/login/')
 def voluntarios(request):
     voluntarios = Voluntario.objects.all()
     context = {'voluntarios': voluntarios}
     return render(request, 'paginas/voluntarios.html', context)
 
+@login_required(login_url='/login/')
 def chat_geral(request):
     return render(request, 'paginas/chat_geral.html')
 
