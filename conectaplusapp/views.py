@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.http.response import HttpResponse 
+from django.http.response import HttpResponse, JsonResponse
 from .forms import CadastroForm
-from .models import Voluntario,Usuario
-from .models import Cacador
+from .models import Voluntario,Usuario, Cacador, Message
+from django.contrib.auth.models import User
 
 def teste(request):
     return render(request, 'paginas/teste.html')
@@ -53,7 +53,29 @@ def voluntarios(request):
 
 @login_required(login_url='/login/')
 def chat_geral(request):
-    return render(request, 'paginas/chat_geral.html')
+    users = User.objects.all()
+    selected_user_id = request.POST.get('selected_user')
+    if selected_user_id:
+        selected_user = User.objects.get(id=selected_user_id)
+        messages = Message.objects.filter(sender=selected_user) | Message.objects.filter(receiver=selected_user)
+    else:
+        messages = Message.objects.filter(sender=request.user) | Message.objects.filter(receiver=request.user)
+    
+    return render(request, 'paginas/chat_geral.html', {'users': users, 'messages': messages})
+
+
+@login_required(login_url='/login/')
+def send_message(request):
+    if request.method == 'POST':
+        content = request.POST.get('message')
+        receiver_id = request.POST.get('receiver_id')  # Você precisa saber para quem enviar a mensagem
+    try:
+        # Código para salvar a mensagem
+        message = Message(sender=request.user, receiver_id=receiver_id, content=content)
+        message.save()
+        return redirect('chat_geral')
+    except Exception as e:
+        return JsonResponse({'status': 'error', 'error_message': str(e)})
 
 def login_user(request):
     request.user = None

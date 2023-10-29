@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from conectaplusapp import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,4 +13,6 @@ urlpatterns = [
     path('voluntarios/', views.voluntarios, name='voluntarios'),
     path('chat_geral/', views.chat_geral, name='chat_geral'),
     path('login/', views.login_user, name = 'login'),
+    path('send_message/', views.send_message, name='send_message'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
 ]
