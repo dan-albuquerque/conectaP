@@ -6,6 +6,7 @@ from django.http.response import HttpResponse, JsonResponse
 from .forms import CadastroForm
 from .models import Voluntario,Usuario, Cacador, Message
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 def teste(request):
     return render(request, 'paginas/teste.html')
@@ -55,12 +56,16 @@ def voluntarios(request):
 def chat_geral(request):
     users = User.objects.all()
     selected_user_id = request.POST.get('selected_user')
+    
     if selected_user_id:
         selected_user = User.objects.get(id=selected_user_id)
-        messages = Message.objects.filter(sender=selected_user) | Message.objects.filter(receiver=selected_user)
+        messages = Message.objects.filter(
+            Q(sender=selected_user, receiver=request.user) | Q(sender=request.user, receiver=selected_user)
+        ).order_by('timestamp')
     else:
-        messages = Message.objects.filter(sender=request.user) | Message.objects.filter(receiver=request.user)
-    
+        messages = Message.objects.filter(
+            Q(sender=request.user, receiver=request.user)
+        ).order_by('timestamp')
     return render(request, 'paginas/chat_geral.html', {'users': users, 'messages': messages})
 
 
