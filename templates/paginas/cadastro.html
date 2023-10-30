@@ -1,15 +1,5 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Conecta +</title>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
-    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
-
-</head>
-<body>
+{% extends 'paginas/base.html' %} 
+{% block conteudo %}
     <div class="logo_inicio">
         <img src="https://cdn.discordapp.com/attachments/1167235296195248150/1167236171051585659/image.png?ex=654d6465&is=653aef65&hm=bbea7e9c9b0140a3cf14f15697a47f05207ecf1d30f0b6fe4f58f80474bcfe55&" alt="logo_inicio">
 
@@ -83,9 +73,4 @@
         
         &nbsp;  
     
-
-    {% block conteudo %}
     {% endblock %}
-
-</body>
-</html>

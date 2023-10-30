@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.texto{
+.texto-home{
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -10,13 +10,13 @@
 }
 
 
-div.texto h1{
+div.texto-home h1{
     align-items: center;
     padding: 1rem;
     text-transform: none;
 }
 
-div.texto p{
+div.texto-home p{
     align-items: center;
     padding: 1rem;
     text-transform: none;
