@@ -15,9 +15,21 @@ def teste(request):
 def home(request):
     return render(request, 'paginas/home.html')
 
-@login_required(login_url='/login/')
+#@login_required(login_url='/login/')
 def projetos(request):
     return render(request, 'paginas/projetos.html')
+
+def projetoX(request):
+    return HttpResponse("Projeto X")
+
+def projetoY(request):
+    return HttpResponse("Projeto Y")
+
+def projetoW(request):
+    return HttpResponse("Projeto W")
+
+def projetoZ(request):
+    return HttpResponse("Projeto Z")
 
 @login_required(login_url='/login/')
 def cacadores(request):
