@@ -11,10 +11,10 @@
 
 .plano-fundo {
     background-color: #d85b40;
-    width: 400px; /* Mudei a largura para 400px para fazer um quadrado. */
+    width: 400px;
     height: 400px;
     display: inline-block;
-    margin: 15px; /* Usei a propriedade 'margin' para definir as margens em todas as direções. */
+    margin: 15px; 
     border: 5px solid #000000;
     border-radius: 20px;
     padding: 15px;
