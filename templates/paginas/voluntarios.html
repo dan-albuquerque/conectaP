@@ -1,11 +1,31 @@
-{% extends 'paginas/base.html' %} 
-{% block conteudo %}
+{% extends 'paginas/base.html' %}
 
+{% block conteudo %}
 <div class="body-voluntarios">
     <h1>Voluntários:</h1>
     <h1>Lista de Voluntários</h1>
 
-    <table class="volunteers-table" >
+    <form method="get" action="{% url 'voluntarios' %}">
+        <label for="state">Filtrar por Estado:</label>
+        <select name="state" id="state">
+            <option value="">Todos os Estados</option>
+            {% for state_option in unique_states %}
+                <option value="{{ state_option }}" {% if state_option == selected_state %}selected{% endif %}>{{ state_option }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="city">Filtrar por Cidade:</label>
+        <select name="city" id="city">
+            <option value="">Todas as Cidades</option>
+            {% for city_option in unique_cities %}
+                <option value="{{ city_option }}" {% if city_option == selected_city %}selected{% endif %}>{{ city_option }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Filtrar">
+    </form>
+
+    <table class="volunteers-table">
         <tbody>
             {% if voluntarios %}
                 {% for voluntario in voluntarios %}
@@ -13,7 +33,7 @@
                         <td class="nome-voluntario">{{ voluntario.nome }}</td>
                         <td class="status-voluntario">{{ voluntario.status }}</td>
                         <td class="localizacao-voluntario">{{ voluntario.cidade }}, {{ voluntario.estado }}</td>
-                        
+
                         <td>
                             <div class="availability">
                                 {% if voluntario.disponivel %}

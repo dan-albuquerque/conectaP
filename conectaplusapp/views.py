@@ -60,8 +60,30 @@ def cadastro(request):
 
 @login_required(login_url='/login/')
 def voluntarios(request):
+    unique_states = Voluntario.objects.values_list('estado', flat=True).distinct()
+    unique_cities = Voluntario.objects.values_list('cidade', flat=True).distinct()
+
+    # Get the selected state and city from the request
+    state = request.GET.get('state')
+    city = request.GET.get('city')
+
+    # Initially, set the queryset to all voluntarios
     voluntarios = Voluntario.objects.all()
-    context = {'voluntarios': voluntarios}
+
+    if state:
+        voluntarios = voluntarios.filter(estado=state)
+
+    if city:
+        voluntarios = voluntarios.filter(cidade=city)
+
+    context = {
+        'voluntarios': voluntarios,
+        'unique_states': unique_states,
+        'unique_cities': unique_cities,
+        'selected_state': state,
+        'selected_city': city,
+    }
+
     return render(request, 'paginas/voluntarios.html', context)
 
 @login_required(login_url='/login/')
