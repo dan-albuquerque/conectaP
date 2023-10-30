@@ -1,4 +1,43 @@
 {% extends 'paginas/base.html' %} 
 {% block conteudo %}
 
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/projetos.css' %}">
+    <!-- Outras tags e links que você pode ter no <head> -->
+</head>
+
+<div class="main-content">
+    <div class="dropdowns">
+        <select>
+            <option>Projetos Ativos</option>
+            <option>Projetos Inativos</option>
+            <!-- Outras opções aqui -->
+        </select>
+        <select>
+            <option>Recife</option>
+            <option>Petrolina</option>
+            <option>Salgueiro</option>
+            <!-- Outras opções aqui -->
+        </select>
+        <select>
+            <option>Pernambuco</option>
+            <!-- Outras opções aqui -->
+        </select>
+    </div>
+    <div class="projects">
+        <a href="{% url 'projetoX' %}"><button id="botaoProjeto">Projeto X</button></a>
+        <a href="{% url 'projetoY' %}"><button id="botaoProjeto">Projeto Y</button></a>
+        <a href="{% url 'projetoW' %}"><button id="botaoProjeto">Projeto W</button></a>
+        <a href="{% url 'projetoZ' %}"><button id="botaoProjeto">Projeto Z</button></a>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+</body>
+</html>
+
+
+
 {% endblock %}
