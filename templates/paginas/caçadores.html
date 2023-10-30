@@ -5,6 +5,26 @@
     <h1>Caçadores:</h1>
     <h1>Lista de Caçadores</h1>
 
+    <form method="get" action="{% url 'caçadores' %}">
+        <label for="state">Filtrar por Estado:</label>
+        <select name="state" id="state">
+            <option value="">Todos os Estados</option>
+            {% for state_option in unique_states %}
+                <option value="{{ state_option }}" {% if state_option == selected_state %}selected{% endif %}>{{ state_option }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="city">Filtrar por Cidade:</label>
+        <select name="city" id="city">
+            <option value="">Todas as Cidades</option>
+            {% for city_option in unique_cities %}
+                <option value="{{ city_option }}" {% if city_option == selected_city %}selected{% endif %}>{{ city_option }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="Filtrar">
+    </form>
+
     <table class="caçadores-table" >
         <tbody>
             {% if cacadores %}
