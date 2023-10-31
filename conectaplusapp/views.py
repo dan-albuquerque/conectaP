@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponse, JsonResponse
 from .forms import CadastroForm
-from .models import Voluntario,Usuario, Cacador, Message
+from .models import Voluntario,Usuario, Cacador, Message, Projeto
 from django.contrib.auth.models import User
 from django.db.models import Q
 
@@ -138,3 +138,19 @@ def login_user(request):
     else:
         context = {'username': ''}
         return render(request, "paginas/login.html", context)
+    
+# @login_required(login_url='/login/')  
+# def cadastro_projeto(request):
+#     if request.method == 'POST':
+#         # Se o formulário for enviado
+#         name = request.POST['name']
+#         descricao = request.POST['descricao']
+#         estados = request.POST['estados']
+
+#         # Criar um objeto Projeto com os valores do formulário
+#         projeto = Projeto(name=name, descricao=descricao, estados=estados)
+#         projeto.save()
+
+#         return redirect('lista_projetos')  # Redirecionar para a página de lista de projetos
+
+#     return render(request, 'paginas/cadastro_projetos.html')

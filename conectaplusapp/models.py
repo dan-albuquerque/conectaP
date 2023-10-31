@@ -18,11 +18,33 @@ class Usuario(models.Model):
 
 
 class Projeto(models.Model):
-    name        = models.CharField(max_length= 100)
-    descricao   = models.TextField(max_length= 500, blank = True, null= True)
-    
+    name = models.CharField(max_length=100)
+    descricao = models.TextField(max_length=500, blank=True, null=True)
+    UNIDADES_FEDERATIVAS = (
+        ('PE', 'Pernambuco'),
+        ('SP', 'São Paulo'),
+        ('RJ', 'Rio de Janeiro'),
+    )
+    estados = models.CharField(max_length=2, choices=UNIDADES_FEDERATIVAS, default='PE')
+    cidade = models.CharField(max_length=100, blank=True)
+    ativo = models.BooleanField(default=True)
+    responsavel = models.ForeignKey('Voluntario', on_delete=models.SET_NULL, null=True)
+
     def __str__(self):
         return self.name
+
+    #MAGIA DO GPTO A BAIXO
+    def save(self, *args, **kwargs):
+        # Define a cidade com base no estado selecionado
+        if not self.cidade:  # Apenas se a cidade não estiver definida
+            cidades_por_estado = {
+                'PE': ['Recife', 'Caruaru', 'Petrolina'],
+                'SP': ['São Paulo', 'Campinas', 'Guarulhos'],
+                'RJ': ['Rio de Janeiro', 'Niterói', 'São Gonçalo'],
+            }
+            self.cidade = cidades_por_estado.get(self.estados, '') or ''
+        super(Projeto, self).save(*args, **kwargs)
+
     
 class Voluntario(models.Model):
     #foto = models.ImageField(upload_to='voluntarios/', blank=True, null=True)

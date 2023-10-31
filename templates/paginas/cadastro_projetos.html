@@ -1,0 +1,47 @@
+{% extends 'paginas/base.html' %} 
+{% block conteudo %}
+
+<div class="body-projeto">
+    <form method="post">
+        {% csrf_token %}
+        <label for="id_nameaa">Nome do Projeto:</label>
+        <textarea name="nameaa" id="id_nameaaa"></textarea><br>
+        <label for="id_descricaoaa">Descrição:</label>
+        <textarea name="descricao" id="id_descricaoaa"></textarea><br>
+        <label for="id_estadosaa">Estado:</label>
+        {{ form.estados }}<br>
+        <label for="id_cidadeaa">Cidade:</label>
+        {{ form.cidade }}<br>
+        <label for="id_ativoaa">Ativo:</label>
+        {{ form.ativo }}<br>
+        <button type="submit">Criar Projeto</button>
+    </form>
+    <div class="dropdowns">
+        <select>
+            <option>Projetos Ativos</option>
+            <option>Projetos Inativos</option>
+            <!-- Outras opções aqui -->
+        </select>
+        <select>
+            <option>PE</option>
+            <option>SP</option>
+            <option>RJ</option>
+            <!-- Outras opções aqui -->
+        </select>
+        <select>
+            <option>Recife</option>
+            <option>Petrolina</option>
+            <option>Salgueiro</option>
+            <option>São Paulo</option>
+            <option>Guarulhos</option>
+            <option>Campinas</option>
+            <option>Rio de Janeiro</option>
+            <option>Niterói</option>
+            <option>Búzios</option>
+            <!-- Outras opções aqui -->
+        </select>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+{% endblock %}

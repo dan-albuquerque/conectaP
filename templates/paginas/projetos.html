@@ -1,31 +1,56 @@
-{% extends 'paginas/base.html' %} 
+{% extends 'paginas/base.html' %}
+
 {% block conteudo %}
+<div class="body-projetos">
+    <h1>Voluntários:</h1>
+    <h1>Lista de Voluntários</h1>
 
-<div class="main-content">
-    <div class="dropdowns">
-        <select>
-            <option>Projetos Ativos</option>
-            <option>Projetos Inativos</option>
-            <!-- Outras opções aqui -->
+    <form method="get" action="{% url 'projetos' %}">
+        <label for="state_project">Filtrar por Estado:</label>
+        <select name="state_project" id="state_project">
+            <option value="">Todos os Estados</option>
+            {% for state_option in unique_states %}
+                <option value="{{ state_option }}" {% if state_option == selected_state %}selected{% endif %}>{{ state_option }}</option>
+            {% endfor %}
         </select>
-        <select>
-            <option>Recife</option>
-            <option>Petrolina</option>
-            <option>Salgueiro</option>
-            <!-- Outras opções aqui -->
+
+        <label for="city_project">Filtrar por Cidade:</label>
+        <select name="city_project" id="city_project">
+            <option value="">Todas as Cidades</option>
+            {% for city_option in unique_cities %}
+                <option value="{{ city_option }}" {% if city_option == selected_city %}selected{% endif %}>{{ city_option }}</option>
+            {% endfor %}
         </select>
-        <select>
-            <option>Pernambuco</option>
-            <!-- Outras opções aqui -->
-        </select>
-    </div>
-    <div class="projects">
-        <a href="{% url 'projetoX' %}"><button id="botaoProjeto">Projeto X</button></a>
-        <a href="{% url 'projetoY' %}"><button id="botaoProjeto">Projeto Y</button></a>
-        <a href="{% url 'projetoW' %}"><button id="botaoProjeto">Projeto W</button></a>
-        <a href="{% url 'projetoZ' %}"><button id="botaoProjeto">Projeto Z</button></a>
-    </div>
-    <div class="scrollbar"></div>
+
+        <input type="submit" value="Filtrar">
+    </form>
+
+    <table class="tabela_projetos">
+        <tbody>
+            {% if projetos %}
+                {% for projeto in projetos %}
+                    <tr>
+                        <td class="nome-projeto">{{ projeto.nome }}</td>
+                        <td class="status-projeto">{{ projeto.status }}</td>
+                        <td class="localizacao-projeto">{{ projeto.cidade }}, {{ projeto.estado }}</td>
+
+                        <td>
+                            <div class="availability">
+                                {% if projeto.ativo %}
+                                    <span class="dot green"></span>
+                                {% else %}
+                                    <span class="dot red"></span>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td class="mensagem-vazio">😔 Nenhum projeto encontrado. 😔</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
 </div>
-
 {% endblock %}

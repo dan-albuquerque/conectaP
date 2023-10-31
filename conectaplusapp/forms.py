@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms  import UserCreationForm
 from django.forms import ModelForm
-from .models import Usuario
+from .models import Usuario, Projeto
 
 class CadastroForm(UserCreationForm):
     class Meta:
@@ -21,3 +21,9 @@ class CadastroForm(UserCreationForm):
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': 'Repeat password'
     }))
+
+
+class ProjetoForm(forms.ModelForm):
+    class Meta:
+        model = Projeto
+        fields = ['name', 'descricao', 'estados', 'cidade', 'ativo']
