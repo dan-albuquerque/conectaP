@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 
 <body>
-    <div class="logo_inicio">
+    <div class="logo_login">
         <img src="https://cdn.discordapp.com/attachments/1167235296195248150/1167236171051585659/image.png?ex=654d6465&is=653aef65&hm=bbea7e9c9b0140a3cf14f15697a47f05207ecf1d30f0b6fe4f58f80474bcfe55&" alt="logo_inicio">
 
     </div>
@@ -18,14 +18,14 @@
         
           {{ form.non_field_errors }}
         
-          <div class="placeholder_cadastro">
+          <div class="login">
             <div class= "plano_fundo">
               &nbsp;
               
               <!-- Input do Nome -->
               <div class="cadastro_palavras">
                 <label for="{{form.username.id_for_label}}"><b>Usuário</b></label>
-                <div>
+                <div class="input-login">
                     <input type="text"  name="username" placeholder="Usuário">
                   </div>
               </div>
@@ -33,22 +33,22 @@
               <!-- Input da Senha1 -->
               <div class="cadastro_palavras">
                 <label for="{{form.password1.id_for_label}}" ><b>Senha</b></label>
-                <div>
+                <div class="input-login">
                     <input type="password" class="form-control mb-3" name="password" placeholder="********">
                 </div>
               </div>
         
              
+                <form method="POST" action="{% url 'home' %}">
+                  {% csrf_token %}
+                  <input type="submit" value="Entrar">
+                </form>
         
-              <!-- Botão de Login -->
-                <div class="col-auto">
-                  <button type="submit" id="botaoLogin" class="placement_botoes" >Entrar</button>
-                </div>
-
-                <div class="col-auto">
-                  <a href="{% url 'cadastro' %}" id="botaoLogin" class="placement_botoes" >Cadastrar</a>
-                </div>
-        
+                <form method="POST" action="{% url 'cadastro' %}">
+                  {% csrf_token %}
+                  <input type="submit" value="Cadastrar">
+                </form>
+              
             </div>
           </div>
         </form>

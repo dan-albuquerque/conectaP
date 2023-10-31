@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div class="logo_inicio">
+    <div class="logo_cadastro">
         <img src="https://cdn.discordapp.com/attachments/1167235296195248150/1167236171051585659/image.png?ex=654d6465&is=653aef65&hm=bbea7e9c9b0140a3cf14f15697a47f05207ecf1d30f0b6fe4f58f80474bcfe55&" alt="logo_inicio">
 
     </div>
@@ -26,7 +26,7 @@
               <!-- Input do Nome -->
               <div class="cadastro_palavras">
                 <label for="{{form.username.id_for_label}}"><b>Username</b></label>
-                <div class="col-sm-4">
+                <div class="input-cadastro">
                   {{form.username}}
                 </div>
               </div>
@@ -34,7 +34,7 @@
               <!-- Input do Email -->
               <div class="cadastro_palavras">
                 <label for="{{form.email.id_for_label}}"><b>Email</b></label>
-                <div class="col-sm-4">
+                <div class="input-cadastro">
                   {{form.email}}
                 </div>
               </div>
@@ -42,7 +42,7 @@
               <!-- Input da Senha1 -->
               <div class="cadastro_palavras">
                 <label for="{{form.password1.id_for_label}}" ><b>Password</b></label>
-                <div class="col-sm-4">
+                <div class="input-cadastro">
                   {{form.password1}}
                 </div>
               </div>
@@ -50,19 +50,21 @@
               <!-- Input da Senha2 -->
               <div class="cadastro_palavras">
                 <label for="{{form.password2.id_for_label}}" ><b>Repeat Password</b></label>
-                <div class="col-sm-4">
+                <div class="input-cadastro">
                   {{form.password2}}
                 </div>
               </div>
         
               <!-- Botão de Cadastro -->
-                <div class="col-auto">
-                  <button type="submit" id="botaoLogin" class="placement_botoes" >Cadastrar</button>
-                </div>
-
-                <div class="col-auto">
-                  <a href="{% url 'login' %}" id="botaoLogin" class="placement_botoes" >Voltar</a>
-                </div>
+                <form method="GET" action="{% url 'cadastro' %}">
+                  {% csrf_token %}
+                  <input type="submit" value="Cadastrar">
+                </form>
+        
+                <form method="GET" action="{% url 'login' %}">
+                  {% csrf_token %}
+                  <input type="submit" value="Voltar">
+                </form>
         
             </div>
           </div>
