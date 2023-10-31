@@ -7,7 +7,7 @@
             <div id="chat-container" style="border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: auto;">
                 {% for message in messages %}
                 <div class="balao-container">
-                    {% if message.sender == user.username %}
+                    {% if message.sender.username == user.username %}
                     <div class="balao-mensagem-user">
                         <p>{{ message.sender }}: {{ message.content }}</p>
                     </div>
@@ -32,24 +32,4 @@
         </div>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
-<script>
-    var socket = io.connect('http://' + document.domain + ':' + location.port);
-
-    socket.on('nova_mensagem', function (mensagem) {
-        var chatContainer = document.getElementById('chat-container');
-        var p = document.createElement('p');
-        p.appendChild(document.createTextNode(mensagem));
-        chatContainer.appendChild(p);
-
-        // Role até o final do contêiner para exibir as mensagens mais recentes
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-    });
-
-    function enviarMensagem() {
-        var mensagem = document.querySelector('input[name="message"]').value;
-        socket.emit('mensagem', mensagem);
-        document.querySelector('input[name="message"]').value = '';
-    }
-</script>
 {% endblock %}
