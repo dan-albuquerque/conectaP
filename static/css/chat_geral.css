@@ -19,3 +19,11 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     float: right;
 }
+
+.caixa-de-chat {
+    border: 1px solid #ccc;
+    padding: 300px;
+    height: 500px;
+    overflow-y: auto;
+    margin-left: 20px;
+}

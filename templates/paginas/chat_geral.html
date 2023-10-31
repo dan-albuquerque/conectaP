@@ -4,7 +4,7 @@
     <h2>Chat Geral</h2>
     <div class="row">
         <div class="col-md-8">
-            <div id="chat-container" style="border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: auto;">
+            <div id="chat-container" class="caixa-de-chat">
                 {% for message in messages %}
                 <div class="balao-container">
                     {% if message.sender.username == user.username %}
@@ -21,14 +21,11 @@
             </div>
             <form method="post" action="{% url 'send_message' %}">
                 {% csrf_token %}
-                <div style="text-align: center;">
-                    <td><input type="text" name="message" class="form-control mb-2" placeholder="Digite sua mensagem" required></td>
-                 <td><button type="submit" class="btn btn-primary">Enviar para o Chat Geral</button></td>
+                <div style="text-align: center">
+                    <input type="text" name="message" class="form-control mb-2" placeholder="Digite sua mensagem" required>
+                 <button type="submit" class="btn btn-primary">Enviar para o Chat Geral</button>
                 </div>
             </form>
-        </div>
-        <div class="col-md-4">
-            <!-- Seu código HTML existente para a lista de usuários -->
         </div>
     </div>
 </div>
