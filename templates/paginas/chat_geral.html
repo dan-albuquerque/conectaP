@@ -1,42 +1,43 @@
 {% extends 'paginas/base.html' %}
 {% block conteudo %}
 <div class="container">
-    <h2>Chat</h2>
+    <h2>Chat Geral</h2>
     <div class="row">
         <div class="col-md-8">
-            <form method="post" action="{% url 'chat_geral' %}">
+            <form method="post" action="{% url 'send_message' %}">
                 {% csrf_token %}
-                <select name="selected_user">
-                    <option value="" selected disabled>Escolha um usuário</option>
-                    {% for user in users %}
-                    <option value="{{ user.id }}">{{ user.username }}</option>
-                    {% endfor %}
-                </select>
-                <button type="submit">Selecionar Usuário</button>
+                <input type="text" name="message" class="form-control mb-2" placeholder="Digite sua mensagem" required>
+                <button type="submit" class="btn btn-primary">Enviar para o Chat Geral</button>
             </form>
             <div id="chat-container" style="border: 1px solid #ccc; padding: 10px; height: 300px; overflow-y: auto;">
                 {% for message in messages %}
-                {% if message.sender == request.user %}
-                <p>Você: {{ message.content }}</p>
-                {% else %}
                 <p>{{ message.sender }}: {{ message.content }}</p>
-                {% endif %}
                 {% endfor %}
             </div>
         </div>
         <div class="col-md-4">
-            <form method="post" action="{% url 'send_message' %}">
-                {% csrf_token %}
-                <select name="receiver_id" class="form-control mb-2">
-                    <option value="" selected disabled>Escolha um destinatário</option>
-                    {% for user in users %}
-                    <option value="{{ user.id }}">{{ user.username }}</option>
-                    {% endfor %}
-                </select>
-                <input type="text" name="message" class="form-control mb-2" placeholder="Digite sua mensagem" required>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
+            <!-- Seu código HTML existente para a lista de usuários -->
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script>
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+    socket.on('nova_mensagem', function (mensagem) {
+        var chatContainer = document.getElementById('chat-container');
+        var p = document.createElement('p');
+        p.appendChild(document.createTextNode(mensagem));
+        chatContainer.appendChild(p);
+
+        // Role até o final do contêiner para exibir as mensagens mais recentes
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    });
+
+    function enviarMensagem() {
+        var mensagem = document.querySelector('input[name="message"]').value;
+        socket.emit('mensagem', mensagem);
+        document.querySelector('input[name="message"]').value = '';
+    }
+</script>
 {% endblock %}

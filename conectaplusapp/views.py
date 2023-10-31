@@ -89,32 +89,21 @@ def voluntarios(request):
 @login_required(login_url='/login/')
 def chat_geral(request):
     users = User.objects.all()
-    selected_user_id = request.POST.get('selected_user')
-    
-    if selected_user_id:
-        selected_user = User.objects.get(id=selected_user_id)
-        messages = Message.objects.filter(
-            Q(sender=selected_user, receiver=request.user) | Q(sender=request.user, receiver=selected_user)
-        ).order_by('timestamp')
-    else:
-        messages = Message.objects.filter(
-            Q(sender=request.user, receiver=request.user)
-        ).order_by('timestamp')
+    messages = Message.objects.all().order_by('timestamp')
     return render(request, 'paginas/chat_geral.html', {'users': users, 'messages': messages})
-
 
 @login_required(login_url='/login/')
 def send_message(request):
     if request.method == 'POST':
         content = request.POST.get('message')
-        receiver_id = request.POST.get('receiver_id')  # Você precisa saber para quem enviar a mensagem
-    try:
-        # Código para salvar a mensagem
-        message = Message(sender=request.user, receiver_id=receiver_id, content=content)
-        message.save()
-        return redirect('chat_geral')
-    except Exception as e:
-        return JsonResponse({'status': 'error', 'error_message': str(e)})
+        try:
+            # Código para salvar a mensagem
+            message = Message(sender=request.user, content=content)
+            message.save()
+            return redirect('chat_geral')
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'error_message': str(e)})
+
 
 def login_user(request):
     request.user = None
