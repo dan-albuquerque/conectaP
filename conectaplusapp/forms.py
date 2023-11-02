@@ -26,4 +26,5 @@ class CadastroForm(UserCreationForm):
 class ProjetoForm(forms.ModelForm):
     class Meta:
         model = Projeto
-        fields = ['name', 'descricao', 'estados', 'cidade', 'ativo']
+        fields = '__all__'
+        exclude = ['responsavel']

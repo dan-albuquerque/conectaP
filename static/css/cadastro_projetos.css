@@ -1,0 +1,61 @@
+
+body {
+    background-color: black; /* Define o fundo preto */
+    color: white; /* Define o texto como branco */
+}
+
+.titulo-cadastro-projeto{
+    padding: 10px 70px;
+    text-align: center; /* Alinha o texto à esquerda dentro da div */
+}
+
+
+.body-cadastro-projetos {
+    padding: 10px -70px;
+    text-align: left; /* Alinha o texto à esquerda dentro da div */
+    display: flex;
+    justify-content: center; /* Centraliza a div horizontalmente */
+    align-items: center; /* Centraliza a div verticalmente */
+    height: 100vh; /* Isso ajuda a centralizar a div na vertical */
+}
+
+
+.placeholder_cadastro_projetos {
+    background-color: #333; /* Define um fundo mais escuro para o formulário */
+    padding: 20px; /* Adiciona algum espaço interno para melhorar a aparência */
+    border-radius: 10px; /* Arredonda as bordas do formulário */
+}
+
+.plano_fundo {
+    background-color: #444; /* Define um fundo ligeiramente mais claro para o conteúdo */
+    padding: 20px; /* Adiciona algum espaço interno para melhorar a aparência */
+    border-radius: 5px; /* Arredonda as bordas do conteúdo */
+}
+
+.cadastro_projetos_palavras {
+    margin: 10px 0; /* Adiciona espaço vertical entre os campos */
+}
+
+label {
+    display: block; /* Coloca cada rótulo em uma nova linha */
+    font-weight: bold; /* Torna o texto do rótulo em negrito */
+}
+
+.input-cadastro-projetos input, .input-cadastro-projetos select {
+    width: 100%; /* Define a largura dos campos como 100% para preencher a largura disponível */
+    padding: 5px; /* Adiciona algum espaço interno aos campos */
+}
+
+button[type="submit"] {
+    background-color: #007bff; /* Define uma cor de fundo para o botão */
+    color: white; /* Define o texto do botão como branco */
+    padding: 10px 20px; /* Adiciona espaço interno ao botão */
+    border: none; /* Remove a borda do botão */
+    border-radius: 5px; /* Arredonda as bordas do botão */
+    cursor: pointer; /* Adiciona uma seta ao cursor quando paira sobre o botão */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Altera a cor de fundo ao passar o mouse sobre o botão */
+}
+

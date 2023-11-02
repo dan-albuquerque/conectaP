@@ -2,15 +2,17 @@
 
 {% block conteudo %}
 <div class="body-projetos">
-    <h1>Voluntários:</h1>
-    <h1>Lista de Voluntários</h1>
+    <h1>Projetos:</h1>
+    <h1>Lista de Projetos</h1>
 
     <form method="get" action="{% url 'projetos' %}">
         <label for="state_project">Filtrar por Estado:</label>
         <select name="state_project" id="state_project">
             <option value="">Todos os Estados</option>
-            {% for state_option in unique_states %}
-                <option value="{{ state_option }}" {% if state_option == selected_state %}selected{% endif %}>{{ state_option }}</option>
+            {% for state_option, state_label in projetos.UNIDADES_FEDERATIVAS %}
+                <option value="{{ state_option }}" {% if state_option == selected_state %}selected{% endif %}>
+                    {{ state_label }}
+                </option>
             {% endfor %}
         </select>
 
@@ -18,21 +20,23 @@
         <select name="city_project" id="city_project">
             <option value="">Todas as Cidades</option>
             {% for city_option in unique_cities %}
-                <option value="{{ city_option }}" {% if city_option == selected_city %}selected{% endif %}>{{ city_option }}</option>
+                <option value="{{ city_option }}" {% if city_option == selected_city %}selected{% endif %}>
+                    {{ city_option }}
+                </option>
             {% endfor %}
         </select>
-
-        <input type="submit" value="Filtrar">
+      
+        <input type="submit" value="Filtrar">    
     </form>
+    
 
     <table class="tabela_projetos">
         <tbody>
             {% if projetos %}
                 {% for projeto in projetos %}
                     <tr>
-                        <td class="nome-projeto">{{ projeto.nome }}</td>
-                        <td class="status-projeto">{{ projeto.status }}</td>
-                        <td class="localizacao-projeto">{{ projeto.cidade }}, {{ projeto.estado }}</td>
+                        <td class="nome-projeto">{{ projeto.name }}</td>
+                        <td class="localizacao-projeto">{{ projeto.cidade }}, {{ projeto.estados }}</td>
 
                         <td>
                             <div class="availability">
@@ -52,5 +56,10 @@
             {% endif %}
         </tbody>
     </table>
+    <div class="botao-cadastro-projeto">
+        <a href="{% url 'cadastro_projetos' %}">
+            <button id="botao-cadastro_projeto" class="botao-cadastro-projeto">Cadastrar</button>
+        </a>
+    </div>
 </div>
 {% endblock %}

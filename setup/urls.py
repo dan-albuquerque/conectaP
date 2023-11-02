@@ -19,5 +19,5 @@ urlpatterns = [
     path('login/', views.login_user, name = 'login'),
     path('send_message/', views.send_message, name='send_message'),
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
-    # path('projetos/cadastro_projetos/', views.cadastro_projeto, name ='cadastro_projetos'),
+    path('projetos/cadastro_projetos/', views.cadastro_projeto, name ='cadastro_projetos'),
 ]

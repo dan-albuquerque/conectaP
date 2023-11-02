@@ -1,47 +1,64 @@
 {% extends 'paginas/base.html' %} 
 {% block conteudo %}
+<div class="titulo-cadastro-projeto">
+     <h1>Cadastro de projetos</h1>
+</div>
 
-<div class="body-projeto">
-    <form method="post">
-        {% csrf_token %}
-        <label for="id_nameaa">Nome do Projeto:</label>
-        <textarea name="nameaa" id="id_nameaaa"></textarea><br>
-        <label for="id_descricaoaa">Descrição:</label>
-        <textarea name="descricao" id="id_descricaoaa"></textarea><br>
-        <label for="id_estadosaa">Estado:</label>
-        {{ form.estados }}<br>
-        <label for="id_cidadeaa">Cidade:</label>
-        {{ form.cidade }}<br>
-        <label for="id_ativoaa">Ativo:</label>
-        {{ form.ativo }}<br>
-        <button type="submit">Criar Projeto</button>
-    </form>
-    <div class="dropdowns">
-        <select>
-            <option>Projetos Ativos</option>
-            <option>Projetos Inativos</option>
-            <!-- Outras opções aqui -->
-        </select>
-        <select>
-            <option>PE</option>
-            <option>SP</option>
-            <option>RJ</option>
-            <!-- Outras opções aqui -->
-        </select>
-        <select>
-            <option>Recife</option>
-            <option>Petrolina</option>
-            <option>Salgueiro</option>
-            <option>São Paulo</option>
-            <option>Guarulhos</option>
-            <option>Campinas</option>
-            <option>Rio de Janeiro</option>
-            <option>Niterói</option>
-            <option>Búzios</option>
-            <!-- Outras opções aqui -->
-        </select>
+<div class="body-cadastro-projetos">
+       
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="placeholder_cadastro_projetos">
+                <div class="plano_fundo_cadastro_projetos">
+                    &nbsp;
+    
+                    <div class="cadastro_projetos">
+                        <label for="{{ form.name.id_for_label }}"><b>Name</b></label>
+                        <div class="input-cadastro-projetos">
+                            {{ form.name }}
+                        </div>
+                    </div>
+    
+                    <!-- Input da Descrição -->
+                    <div class="cadastro_projetos_palavras">
+                        <label for="{{ form.descricao.id_for_label }}"><b>Descrição</b></label>
+                        <div class="input-cadastro-projetos">
+                            {{ form.descricao }}
+                        </div>
+                    </div>
+    
+                    <!-- Input do Estado -->
+                    <div class="cadastro_projetos_palavras">
+                        <label for="{{ form.estados.id_for_label }}"><b>Estado</b></label>
+                        <div class="input-cadastro-projetos">
+                            {{ form.estados }}
+                        </div>
+                    </div>
+    
+                    <!-- Input da Cidade -->
+                    <div class="cadastro_projetos_palavras">
+                        <label for="{{ form.cidade.id_for_label }}"><b>Cidade</b></label>
+                        <div class="input-cadastro-projetos">
+                            {{ form.cidade }}
+                        </div>
+                    </div>
+    
+                    <!-- Input do Ativo -->
+                    <div class="cadastro_projetos_palavras">
+                        <label for="{{ form.ativo.id_for_label }}"><b>Ativo</b></label>
+                        <div class="input-cadastro-projetos">
+                            {{ form.ativo }}
+                        </div>
+                    </div>
+    
+                    <!-- Botão de Salvar -->
+                    <button type="submit">Salvar</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="scrollbar"></div>
+    
 </div>
 
 {% endblock %}

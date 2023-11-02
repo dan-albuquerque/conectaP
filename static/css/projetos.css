@@ -52,3 +52,14 @@ body {
     display: flex;
     justify-content: space-between;
 }
+
+.botao-cadastro-projeto {
+    background-color: #1d3f63;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+}

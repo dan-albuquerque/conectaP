@@ -3,7 +3,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponse, JsonResponse
-from .forms import CadastroForm
+from django.http import HttpResponseForbidden
+from .forms import CadastroForm, ProjetoForm
 from .models import Voluntario,Usuario, Cacador, Message, Projeto
 from django.contrib.auth.models import User
 from django.db.models import Q
@@ -15,9 +16,29 @@ def teste(request):
 def home(request):
     return render(request, 'paginas/home.html')
 
-#@login_required(login_url='/login/')
+@login_required(login_url='/login/')
 def projetos(request):
-    return render(request, 'paginas/projetos.html')
+    projetos = Projeto.objects.all()
+    selected_state = request.GET.get('state_project')
+    selected_city = request.GET.get('city_project')
+
+    if selected_state:
+        projetos = projetos.filter(estados=selected_state)
+    if selected_city:
+        projetos = projetos.filter(cidade=selected_city)
+
+    unique_states = Projeto.objects.values_list('estados', flat=True).distinct()
+    unique_cities = Projeto.objects.values_list('cidade', flat=True).distinct()
+
+    context = {
+        'projetos': projetos,
+        'selected_state': selected_state,
+        'selected_city': selected_city,
+        'unique_states': unique_states,
+        'unique_cities': unique_cities,
+    }
+    
+    return render(request, 'paginas/projetos.html', context )
 
 def projetoX(request):
     return HttpResponse("Projeto X")
@@ -128,18 +149,16 @@ def login_user(request):
         context = {'username': ''}
         return render(request, "paginas/login.html", context)
     
-# @login_required(login_url='/login/')  
-# def cadastro_projeto(request):
-#     if request.method == 'POST':
-#         # Se o formulário for enviado
-#         name = request.POST['name']
-#         descricao = request.POST['descricao']
-#         estados = request.POST['estados']
+@login_required(login_url='/login/')  
+def cadastro_projeto(request):
+    if request.method == 'POST':
+        form = ProjetoForm(request.POST)
+        if form.is_valid():
+            projeto = form.save()
+            return redirect('projetos')
+    else:
+        form = ProjetoForm()
 
-#         # Criar um objeto Projeto com os valores do formulário
-#         projeto = Projeto(name=name, descricao=descricao, estados=estados)
-#         projeto.save()
 
-#         return redirect('lista_projetos')  # Redirecionar para a página de lista de projetos
+    return render(request, 'paginas/cadastro_projetos.html', {'form': form})
 
-#     return render(request, 'paginas/cadastro_projetos.html')
