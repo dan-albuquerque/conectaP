@@ -9,21 +9,22 @@
 
 <body>
     <div class="logo_login">
-        <img src="https://cdn.discordapp.com/attachments/1167235296195248150/1167236171051585659/image.png?ex=654d6465&is=653aef65&hm=bbea7e9c9b0140a3cf14f15697a47f05207ecf1d30f0b6fe4f58f80474bcfe55&" alt="logo_inicio">
+        <img src="{% static 'midia\Group 10.png' %}" alt="Logo Conecta +">
 
     </div>
     &nbsp;
+    <div class="corpo-login">
         <form action="" method="POST">
           {% csrf_token %}
         
           {{ form.non_field_errors }}
         
-          <div class="login">
-            <div class= "plano_fundo">
+          <div class="placeholder_login">
+            <div class= "plano_fundo-login">
               &nbsp;
               
               <!-- Input do Nome -->
-              <div class="cadastro_palavras">
+              <div class="login_palavras">
                 <label for="{{form.username.id_for_label}}"><b>Usuário</b></label>
                 <div class="input-login">
                     <input type="text"  name="username" placeholder="Usuário">
@@ -31,29 +32,32 @@
               </div>
         
               <!-- Input da Senha1 -->
-              <div class="cadastro_palavras">
+              <div class="login_palavras">
                 <label for="{{form.password1.id_for_label}}" ><b>Senha</b></label>
                 <div class="input-login">
                     <input type="password" class="form-control mb-3" name="password" placeholder="********">
                 </div>
               </div>
         
-             
+              <div class="botoes-login">
                 <form method="POST" action="{% url 'home' %}">
                   {% csrf_token %}
                   <input type="submit" value="Entrar">
                 </form>
-        
+              </div>
+              <div class="botoes-login">
                 <form method="POST" action="{% url 'cadastro' %}">
                   {% csrf_token %}
                   <input type="submit" value="Cadastrar">
                 </form>
+              </div>
               
             </div>
           </div>
         </form>
-
+      </div>
         <!-- Mensagem de erro -->
+        
         <div class="form-group row justify-content-center align-items-center">
           {% if form.errors or form.non_field_errors %}
             <div class="col-sm-12"> 

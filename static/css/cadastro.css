@@ -1,5 +1,5 @@
 body{
-  background-color: #23293B;
+  background-color: #381635;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,19 +9,26 @@ body{
   padding: 1rem;
 }
 
+.logo_cadastro{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .logo_cadastro img{
   height: auto;
-  width: 90%;
+  width: 50%;
   padding: 2rem;
 }
 
-.plano_fundo {
-  background-color: #000;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #fff;
-  width: 350px;
-  padding: 2rem 5rem 3rem 5rem;
-  text-align: center;
+
+.plano_fundo-cadastro label{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  flex-direction: row;
 }
 
 .cadastro_palavras{
@@ -37,20 +44,31 @@ body{
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 50%;
   padding: 1rem;
 }
 
+.input-cadastro input{
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 0.5rem;
+}
 
+.botoes-cadastro{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.5rem;
+}
 
-input[type="submit"] {
+.botoes-cadastro input[type="submit"] {
   background-color: #1c1347;
   color:#fff;
-  border: 1rem;
   cursor: pointer;
   border-radius: 5px;
   padding: 1rem;
 }
 
-input[type="submit"]:hover {
-  background-color: #030d22; 
+.botoes-cadastro input[type="submit"]:hover {
+  background-color: #D85B40; 
 }

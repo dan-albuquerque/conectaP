@@ -9,7 +9,7 @@
 
 <body>
     <div class="logo_cadastro">
-        <img src="https://cdn.discordapp.com/attachments/1167235296195248150/1167236171051585659/image.png?ex=654d6465&is=653aef65&hm=bbea7e9c9b0140a3cf14f15697a47f05207ecf1d30f0b6fe4f58f80474bcfe55&" alt="logo_inicio">
+        <img src="{% static 'midia\Group 10.png' %}" alt="Logo Conecta +">
 
     </div>
     &nbsp;
@@ -20,12 +20,12 @@
           {{ form.non_field_errors }}
         
           <div class="placeholder_cadastro">
-            <div class= "plano_fundo">
+            <div class= "plano_fundo-cadastro">
               &nbsp;
               
               <!-- Input do Nome -->
               <div class="cadastro_palavras">
-                <label for="{{form.username.id_for_label}}"><b>Username</b></label>
+                <label for="{{form.username.id_for_label}}"><b>Usuário</b></label>
                 <div class="input-cadastro">
                   {{form.username}}
                 </div>
@@ -54,23 +54,27 @@
                   {{form.password2}}
                 </div>
               </div>
-        
-              <!-- Botão de Cadastro -->
+
+              <div class="botoes-cadastro">
                 <form method="GET" action="{% url 'cadastro' %}">
                   {% csrf_token %}
                   <input type="submit" value="Cadastrar">
                 </form>
-        
+              </div>
+
+              <div class="botoes-cadastro">
                 <form method="GET" action="{% url 'login' %}">
                   {% csrf_token %}
                   <input type="submit" value="Voltar">
                 </form>
-        
+              </div>
+              
             </div>
           </div>
         </form>
       </div>
         <!-- Mensagem de erro -->
+        <!--
         <div class="form-group row justify-content-center align-items-center">
           {% if form.errors or form.non_field_errors %}
             <div class="col-sm-12"> 
@@ -80,7 +84,7 @@
             </div>
           {% endif %}
         </div>
-        
+        -->
         
         &nbsp;  
 </body>
