@@ -12,15 +12,18 @@
 }
 
 body {
-    background: #381635;
+
+    background-color: #381635;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     min-height: 100vh;
     margin: 0;
 }
 
 nav {
-    background: linear-gradient(to bottom, #D85B40, #292A86);
+    background-image: linear-gradient(to bottom, #D85B40, #292A86);
     padding: 1rem 0;
     display: flex;
     flex-direction: column;
@@ -46,7 +49,7 @@ div.logo a {
 
 div.logo img {
     height: auto;
-    width: 100%;
+    width: 50%;
 }
 
 .menu {

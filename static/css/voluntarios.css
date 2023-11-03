@@ -4,6 +4,7 @@
     text-align: center;
     width: 100%;
     color: #fff;
+    background: #381635;
     padding: 1rem;
 }
 
@@ -97,14 +98,14 @@ select {
     display: flex;
     align-items: center;
     justify-self: center;
-    width: 50%;
+    width: 40%;
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 input[type="submit"] {
-    background-color: #1d3f63;
+    background-color: #1c1347;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -115,5 +116,5 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #255b96;
+    background-color: #D85B40;
 }
