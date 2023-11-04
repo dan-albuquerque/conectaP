@@ -6,7 +6,7 @@
     <h1>Lista de Projetos</h1>
 
     <form method="get" action="{% url 'projetos' %}">
-        <label for="state_project">Filtrar por Estado:</label>
+        
         <select name="state_project" id="state_project">
             <option value="">Todos os Estados</option>
             {% for state_option, state_label in projetos.UNIDADES_FEDERATIVAS %}
@@ -16,7 +16,6 @@
             {% endfor %}
         </select>
 
-        <label for="city_project">Filtrar por Cidade:</label>
         <select name="city_project" id="city_project">
             <option value="">Todas as Cidades</option>
             {% for city_option in unique_cities %}
@@ -28,6 +27,12 @@
       
         <input type="submit" value="Filtrar">    
     </form>
+    
+    <div class="botao-cadastro-projeto">
+        <form action="{% url 'cadastro_projetos' %}" method="GET">
+            <input type="submit" value="Cadastrar" id="botao-cadastro_projeto" class="botao-cadastro-projeto">
+        </form>
+    </div>
     
 
     <table class="tabela_projetos">
@@ -56,10 +61,6 @@
             {% endif %}
         </tbody>
     </table>
-    <div class="botao-cadastro-projeto">
-        <a href="{% url 'cadastro_projetos' %}">
-            <button id="botao-cadastro_projeto" class="botao-cadastro-projeto">Cadastrar</button>
-        </a>
-    </div>
+    
 </div>
 {% endblock %}

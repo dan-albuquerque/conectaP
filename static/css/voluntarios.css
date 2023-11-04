@@ -1,6 +1,8 @@
 .body-voluntarios{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-self: center;
     text-align: center;
     width: 100%;
     color: #fff;
@@ -86,7 +88,8 @@ form{
     justify-self: center;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
+    padding: 1rem;
 }
 
 label {

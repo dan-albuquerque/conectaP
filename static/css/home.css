@@ -1,22 +1,23 @@
 @charset "UTF-8";
 
-.body-voluntarios{
+.body-home{
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 100%;
+    color: #fff;
     background: #381635;
     padding: 1rem;
 }
 
 .frase_inicial{
-    background-color: #381635;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: #fff;
     padding: 2rem;
+    width: 100%;
 }
 
 div.frase_inicial h1{
