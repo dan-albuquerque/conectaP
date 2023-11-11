@@ -8,6 +8,10 @@ from .forms import CadastroForm, ProjetoForm
 from .models import Voluntario,Usuario, Cacador, Message, Projeto
 from django.contrib.auth.models import User
 from django.db.models import Q
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from twilio.twiml.messaging_response import MessagingResponse
+
 
 def teste(request):
     return render(request, 'paginas/teste.html')
@@ -162,3 +166,12 @@ def cadastro_projeto(request):
 
     return render(request, 'paginas/cadastro_projetos.html', {'form': form})
 
+@csrf_exempt
+def message(request):
+    user = request.POST.get('From')
+    message = request.POST.get('Body')
+    print(f'{user} says {message}')
+
+    response = MessagingResponse()
+    response.message('Yara é um genio!')
+    return HttpResponse(str(response))
