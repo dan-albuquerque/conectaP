@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponse, JsonResponse
 from django.http import HttpResponseForbidden
 from .forms import CadastroForm, ProjetoForm
-from .models import Voluntario,Usuario, Cacador, Message, Projeto
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.http import HttpResponse
@@ -14,6 +13,9 @@ from twilio.twiml.messaging_response import MessagingResponse
 from .daos.usuarioDAO import UsuarioDAO
 from .daos.projetoDAO import ProjetoDAO
 from .daos.usuarioDAO import UsuarioDAO
+from .daos.cacadorDAO import CacadorDAO
+from .daos.voluntarioDAO import VoluntarioDAO
+from .daos.messageDAO import MessageDAO
 
 def teste(request):
     return render(request, 'paginas/teste.html')
@@ -63,7 +65,9 @@ def projetoZ(request):
 
 @login_required(login_url='/login/')
 def cacadores(request):
-    cacadores = Cacador.objects.all()
+    cacadorDAO = CacadorDAO()
+
+    cacadores = cacadorDAO.obterTodosCacadores()
     context = {'cacadores': cacadores}
     return render(request, 'paginas/caçadores.html', context)
 
@@ -72,6 +76,8 @@ def inicio(request):
     return render(request, 'paginas/inicio.html')
 
 def cadastro(request):
+    usuarioDAO = UsuarioDAO()
+
     if request.method == 'POST':
         form = CadastroForm(request.POST)
         
@@ -80,7 +86,7 @@ def cadastro(request):
             email = form.cleaned_data['email']
             password = form.cleaned_data['password1']
             
-            UsuarioDAO.criarUsuario(username, email, password) # se quiser pode colocar phone e email como parâmetro
+            usuarioDAO.criarUsuario(username, email, password) # se quiser pode colocar phone e email como parâmetro
 
             return redirect('inicio')
     else:
@@ -92,21 +98,21 @@ def cadastro(request):
 
 @login_required(login_url='/login/')
 def voluntarios(request):
-    unique_states = Voluntario.objects.values_list('estado', flat=True).distinct()
-    unique_cities = Voluntario.objects.values_list('cidade', flat=True).distinct()
+    voluntarioDAO = VoluntarioDAO()
 
-    # Get the selected state and city from the request
+    unique_states = voluntarioDAO.obterVoluntariosPorEstado()
+    unique_cities = voluntarioDAO.obterVoluntariosPorCidade()
+
     state = request.GET.get('state')
     city = request.GET.get('city')
 
-    # Initially, set the queryset to all voluntarios
-    voluntarios = Voluntario.objects.all()
+    voluntarios = voluntarioDAO.obterTodosVoluntarios()
 
     if state:
-        voluntarios = voluntarios.filter(estado=state)
+        voluntarios = voluntarioDAO.obterVoluntariosPorEstado(estado=state)
 
     if city:
-        voluntarios = voluntarios.filter(cidade=city)
+        voluntarios = voluntarioDAO.obterVoluntatiosPorCidade(cidade=city)
 
     context = {
         'voluntarios': voluntarios,
@@ -120,24 +126,28 @@ def voluntarios(request):
 
 @login_required(login_url='/login/')
 def chat_geral(request):
-    users = UsuarioDAO.obterTodosUsuarios()
-    messages = Message.objects.all().order_by('timestamp')
+    usuarioDAO = UsuarioDAO()
+    messageDAO = MessageDAO()
+
+    users = usuarioDAO.obterTodosUsuarios()
+    messages = messageDAO.obterTodasMensagensOrdenadas()
     return render(request, 'paginas/chat_geral.html', {'users': users, 'messages': messages})
 
 @login_required(login_url='/login/')
 def send_message(request):
+    messageDAO = MessageDAO()
+
     if request.method == 'POST':
-        content = request.POST.get('message')
+        conteudo = request.POST.get('message')
         try:
-            # Código para salvar a mensagem
-            message = Message(sender=request.user, content=content)
-            message.save()
+            mensagem = messageDAO.criarMensagem(remetente=request.user, conteudo=conteudo)
             return redirect('chat_geral')
         except Exception as e:
             return JsonResponse({'status': 'error', 'error_message': str(e)})
 
-
 def login_user(request):
+    usuarioDAO = UsuarioDAO()
+
     request.user = None
     if request.method == "POST":
         username = request.POST['username']
@@ -146,12 +156,13 @@ def login_user(request):
         if user is not None:
             login(request, user)
             
+            # Comentei pois acho que não faz sentido essa parte. Pois o Usuario sempre é criado no cadastro
             #cria perfil
-            print(f"user: {request.user}")
-            if not UsuarioDAO.obterUsuarioPorUser(user=request.user):
-                
-                Usuario.objects.create(user=request.user, name=username)
-            
+            #print(f"user: {request.user}")
+            #if not usuarioDAO.obterUsuarioPorUser(user=request.user):
+            #    
+            #    Usuario.objects.create(user=request.user, name=username)
+            #
             return redirect("home") #redirecionamento quando ele consegue dfazer o login
         else:
             messages.success(request, ("Erro no seu login"))
