@@ -12,6 +12,8 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from twilio.twiml.messaging_response import MessagingResponse
 from .daos.usuarioDAO import UsuarioDAO
+from .daos.projetoDAO import ProjetoDAO
+from .daos.usuarioDAO import UsuarioDAO
 
 def teste(request):
     return render(request, 'paginas/teste.html')
@@ -22,17 +24,20 @@ def home(request):
 
 @login_required(login_url='/login/')
 def projetos(request):
-    projetos = Projeto.objects.all()
+    projetoDAO = ProjetoDAO()
+
+    projetos = projetoDAO.obterTodosProjetos()
+    
     selected_state = request.GET.get('state_project')
     selected_city = request.GET.get('city_project')
 
     if selected_state:
-        projetos = projetos.filter(estados=selected_state)
+        projetos = projetoDAO.obterProjetosPorEstado(estados=selected_state) 
     if selected_city:
-        projetos = projetos.filter(cidade=selected_city)
+        projetos = projetoDAO.obterProjetosPorCidade(cidades=selected_city)
 
-    unique_states = Projeto.objects.values_list('estados', flat=True).distinct()
-    unique_cities = Projeto.objects.values_list('cidade', flat=True).distinct()
+    unique_states = projetoDAO.obterEstadosDistintos()
+    unique_cities = projetoDAO.obterCidadesDistintas()
 
     context = {
         'projetos': projetos,
@@ -115,7 +120,7 @@ def voluntarios(request):
 
 @login_required(login_url='/login/')
 def chat_geral(request):
-    users = User.objects.all()
+    users = UsuarioDAO.obterTodosUsuarios()
     messages = Message.objects.all().order_by('timestamp')
     return render(request, 'paginas/chat_geral.html', {'users': users, 'messages': messages})
 
@@ -143,7 +148,7 @@ def login_user(request):
             
             #cria perfil
             print(f"user: {request.user}")
-            if not Usuario.objects.filter(user=request.user):
+            if not UsuarioDAO.obterUsuarioPorNome(user=request.user):
                 
                 Usuario.objects.create(user=request.user, name=username)
             
