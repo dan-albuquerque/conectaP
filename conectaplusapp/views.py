@@ -11,7 +11,7 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from twilio.twiml.messaging_response import MessagingResponse
-
+from .daos.usuarioDAO import UsuarioDAO
 
 def teste(request):
     return render(request, 'paginas/teste.html')
@@ -71,10 +71,12 @@ def cadastro(request):
         form = CadastroForm(request.POST)
         
         if form.is_valid():
-            user = form.save() 
-            usuario = Usuario(user=user, nome=user.username, sobrenome='', phone='', email=form.cleaned_data['email'], senha=user.password)
-            usuario.save()
-            usuario.save()
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password1']
+            
+            UsuarioDAO.criarUsuario(username, email, password) # se quiser pode colocar phone e email como parâmetro
+
             return redirect('inicio')
     else:
         form = CadastroForm()
