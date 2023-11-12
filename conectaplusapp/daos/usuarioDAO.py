@@ -25,5 +25,6 @@ class UsuarioDAO:
         return Usuario.objects.all()
     
     @staticmethod
-    def obterUsuarioPorNome(username):
-        return Usuario.objects.filter(user=username)
+    def obterUsuarioPorUser(user):
+        return Usuario.objects.filter(user=user)
+

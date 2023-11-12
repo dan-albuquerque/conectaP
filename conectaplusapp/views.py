@@ -148,7 +148,7 @@ def login_user(request):
             
             #cria perfil
             print(f"user: {request.user}")
-            if not UsuarioDAO.obterUsuarioPorNome(user=request.user):
+            if not UsuarioDAO.obterUsuarioPorUser(user=request.user):
                 
                 Usuario.objects.create(user=request.user, name=username)
             
