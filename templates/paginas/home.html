@@ -4,7 +4,217 @@
 <div class="body-home">
     <div class="frase_inicial">
         <h2>Olá, {{ user.username }}!</h2>
-        <p>Boa comunicação é a chave</p>
+        <p>MURAL DE ATIVIDADES</p>
     </div>
+
+    <div class="balao-entrevista">
+        <p>MURAL DE ATIVIDADES</p>
+    </div>
+
+    <div class="balao-entrevista">
+        <p>Documentar projeto Y...</p>
+        <div class="opcoes-entrevista">
+            <div class="opcao-gaveta" onclick="toggleGaveta(this)">
+                <p>Opções</p>
+                <div class="gaveta hidden">
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Opção 1"> Opção 1
+                    </label>
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Opção 2"> Opção 2
+                    </label>
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Opção 3"> Opção 3
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="balao-entrevista">
+        <p>Responder projeto X...</p>
+        <div class="opcoes-entrevista">
+            <div class="opcao-gaveta" onclick="toggleGaveta(this)">
+                <p>Opções</p>
+                <div class="gaveta hidden">
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação 1"> Ação 1
+                    </label>
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação 2"> Ação 2
+                    </label>
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação 3"> Ação 3
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="balao-entrevista">
+        <p>Contactar Voluntário Z ...</p>
+        <div class="opcoes-entrevista">
+            <div class="opcao-gaveta" onclick="toggleGaveta(this)">
+                <p>Opções</p>
+                <div class="gaveta hidden">
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação A"> Ação A
+                    </label>
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação B"> Ação B
+                    </label>
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação C"> Ação C
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="balao-entrevista">
+        <p>Recrutar N voluntários para ...</p>
+        <div class="opcoes-entrevista">
+            <div class="opcao-gaveta" onclick="toggleGaveta(this)">
+                <p>Opções</p>
+                <div class="gaveta hidden">
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação A"> Ação A
+                    </label>
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação B"> Ação B
+                    </label>
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação C"> Ação C
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="balao-entrevista">
+        <p>Atualizar roteiro de viagem ...</p>
+        <div class="opcoes-entrevista">
+            <div class="opcao-gaveta" onclick="toggleGaveta(this)">
+                <p>Opções</p>
+                <div class="gaveta hidden">
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação A"> Ação A
+                    </label>
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação B"> Ação B
+                    </label>
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação C"> Ação C
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="balao-entrevista">
+        <p>Marcar entrevista com ...</p>
+        <div class="opcoes-entrevista">
+            <div class="opcao-gaveta" onclick="toggleGaveta(this)">
+                <p>Opções</p>
+                <div class="gaveta hidden">
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação A"> Ação A
+                    </label>
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação B"> Ação B
+                    </label>
+                    <label>
+                        <input type="checkbox" class="opcao-checkbox" value="Ação C"> Ação C
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adicione mais balões conforme necessário -->
+
 </div>
+
+<style>
+    .body-home {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        flex-wrap: wrap;
+    }
+
+    .frase_inicial {
+        text-align: center;
+        width: 100%;
+    }
+
+    .balao-entrevista {
+        position: relative;
+        background-color: #4B0082; /* Lilás mais escuro */
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        max-width: 300px;
+        text-align: center;
+        margin-top: 20px;
+        margin-right: 20px;
+        flex: 1;
+        z-index: 1; /* Z-index padrão para os balões */
+    }
+
+    .opcoes-entrevista {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .opcao-gaveta {
+        background-color: #2E0854; /* Lilás ainda mais escuro */
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        position: relative;
+        z-index: 2; /* Z-index maior para a gaveta */
+    }
+
+    .opcao-gaveta:hover {
+        background-color: #1E0531; /* Roxo escuro */
+    }
+
+    .gaveta {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #2E0854;
+        padding: 5px;
+        border-radius: 0 0 5px 5px;
+        z-index: 3; /* Z-index ainda maior para a gaveta aberta */
+    }
+
+    .gaveta .opcao-checkbox {
+        margin: 5px;
+    }
+
+    .gaveta.show {
+        display: flex;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+<script>
+    function toggleGaveta(element) {
+        const gaveta = element.querySelector('.gaveta');
+        gaveta.classList.toggle('show');
+    }
+</script>
+
 {% endblock %}
