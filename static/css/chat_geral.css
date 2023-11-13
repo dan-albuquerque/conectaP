@@ -1,9 +1,42 @@
+@charset "UTF-8";
+
+.body-chat{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    color: #fff;
+    background: #381635;
+    padding: 1rem;
+}
+
+div.body-chat h2{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    text-transform: none;
+}
+
+.row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    border-radius: 15px;
+    margin: 2rem;
+    background: #0D0E26;
+    padding: 2rem;
+}
+
 .balao-container {
     clear: both;
 }
 
 .balao-mensagem-geral {
     background-color: #fff;
+    color: #000;
     padding: 10px;
     margin: 5px;
     border-radius: 5px;
@@ -13,6 +46,7 @@
 
 .balao-mensagem-user {
     background-color: #fff;
+    color: #000;
     padding: 10px;
     margin: 5px;
     border-radius: 5px;
@@ -21,9 +55,46 @@
 }
 
 .caixa-de-chat {
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
+    border-radius: 10px;
     padding: 300px;
-    height: 500px;
+    height: 400px;
     overflow-y: auto;
-    margin-left: 20px;
+}
+
+form {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mensagem-chat_geral{
+    width: 80%;
+    
+}
+
+.mensagem{
+    width: 100%;
+    height: 100%;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.enviar-btn {
+    text-align: right;
+}
+
+.enviar {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.enviar:hover {
+    background-color: #D85B40;
 }

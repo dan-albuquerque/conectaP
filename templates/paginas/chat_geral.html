@@ -1,32 +1,53 @@
 {% extends 'paginas/base.html' %}
 {% block conteudo %}
-<div class="container">
+
+<div class="body-chat">
+
     <h2>Chat Geral</h2>
+
     <div class="row">
         <div class="col-md-8">
+
             <div id="chat-container" class="caixa-de-chat">
                 {% for message in messages %}
+
                 <div class="balao-container">
+
                     {% if message.sender.username == user.username %}
+
                     <div class="balao-mensagem-user">
                         <p>{{ message.sender }}: {{ message.content }}</p>
                     </div>
+
                     {% else %}
+
                     <div class="balao-mensagem-geral">
                         <p>{{ message.sender }}: {{ message.content }}</p>
                     </div>
+
                     {% endif %}
                 </div>
+
                 {% endfor %}
             </div>
+
+
             <form method="post" action="{% url 'send_message' %}">
                 {% csrf_token %}
-                <div style="text-align: center">
-                    <input type="text" name="message" class="form-control mb-2" placeholder="Digite sua mensagem" required>
-                 <button type="submit" class="btn btn-primary">Enviar para o Chat Geral</button>
+                
+                <div class="mensagem-chat_geral">
+                    <input type="text" name="message" class="mensagem" placeholder="Digite sua mensagem" required>
+                </div>
+
+                <div class="enviar-mensagem">
+                    <input type="submit" value="Enviar" class="btn enviar">
                 </div>
             </form>
-        </div>
+            
+
+
+        </div
+        >
     </div>
 </div>
 {% endblock %}

@@ -191,5 +191,5 @@ def message(request):
     print(f'{user} says {message}')
 
     response = MessagingResponse()
-    response.message('Yara é um genio!')
+    response.message('Hostech')
     return HttpResponse(str(response))

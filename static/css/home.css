@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    align-items: center;
     width: 100%;
     color: #fff;
     background: #381635;
@@ -27,9 +28,70 @@ div.frase_inicial h1{
     text-transform: none;
 }
 
-div.frase_inicial p{
+.balao-titulo{
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 30%;
+    border-radius: 15px;
+    margin: 1rem;
+    background: #D85B40;
     padding: 1rem;
-    text-transform: none;
+}
+
+.balao-entrevista{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    width: 85%;
+    border-radius: 15px;
+    margin: 1rem;
+    background: #811D77;
+    padding: 1rem;
+}
+
+.opcoes-entrevista {
+    width: 15%;
+}
+
+.opcao-gaveta {
+    background-color: #2E0854;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    z-index: 2; 
+}
+
+.opcao-gaveta:hover {
+    background-color: #1E0531;
+}
+
+.gaveta {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #2E0854;
+    padding: 5px;
+    border-radius: 0 0 5px 5px;
+    z-index: 3; 
+}
+
+.gaveta .opcao-checkbox {
+    margin: 5px;
+}
+
+.gaveta.show {
+    display: flex;
+}
+
+.hidden {
+    display: none;
 }
