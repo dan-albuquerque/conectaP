@@ -1,0 +1,20 @@
+{% extends 'paginas/base.html' %}
+
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/visualizar_projeto.css' %}">
+{% endblock %}
+
+{% block conteudo %}
+<div class="project-details">
+    <p><label>Nome:</label> {{ projeto.name }}</p>
+    <p><label>Descrição:</label> {{ projeto.descricao }}</p>
+    <p><label>Estado:</label> {{ projeto.estados }}</p>
+    <p><label>Cidade:</label> {{ projeto.cidade }}</p>
+    <p><label>Ativo:</label> <span class="{{ projeto.ativo|yesno:'project-active,project-inactive' }}">{{ projeto.ativo|yesno:"Sim,Não" }}</span></p>
+    
+    <!-- Botão de voltar para a página dos projetos -->
+    <a href="{% url 'projetos' %}" class="back-button">Voltar aos Projetos</a>
+</div>
+{% endblock %}

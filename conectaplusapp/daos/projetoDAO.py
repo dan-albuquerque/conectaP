@@ -20,3 +20,7 @@ class ProjetoDAO:
     @staticmethod
     def filtrarPorCidade(cidade):
         return Projeto.objects.filter(cidade=cidade)
+    
+    @staticmethod
+    def obterProjetoPorId(self, id):
+        return Projeto.objects.get(id=id)

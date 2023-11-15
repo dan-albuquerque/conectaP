@@ -16,6 +16,9 @@ from .daos.usuarioDAO import UsuarioDAO
 from .daos.cacadorDAO import CacadorDAO
 from .daos.voluntarioDAO import VoluntarioDAO
 from .daos.messageDAO import MessageDAO
+from django.shortcuts import get_object_or_404
+from .models import Projeto
+
 
 def teste(request):
     return render(request, 'paginas/teste.html')
@@ -51,17 +54,7 @@ def projetos(request):
     
     return render(request, 'paginas/projetos.html', context )
 
-def projetoX(request):
-    return HttpResponse("Projeto X")
 
-def projetoY(request):
-    return HttpResponse("Projeto Y")
-
-def projetoW(request):
-    return HttpResponse("Projeto W")
-
-def projetoZ(request):
-    return HttpResponse("Projeto Z")
 
 @login_required(login_url='/login/')
 def cacadores(request):
@@ -193,3 +186,13 @@ def message(request):
     response = MessagingResponse()
     response.message('Hostech')
     return HttpResponse(str(response))
+
+
+
+def visualizar_projeto(request, id):
+    # Busca o projeto pelo ID ou retorna um erro 404 se não encontrar
+    projeto = get_object_or_404(Projeto, id=id)
+    # Renderiza o template 'visualizar_projeto.html' passando o projeto encontrado como contexto
+    # Note the 'paginas/' prefix in the template name
+    return render(request, 'paginas/visualizar_projeto.html', {'projeto': projeto})
+

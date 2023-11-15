@@ -36,13 +36,20 @@
     
 
     <table class="tabela_projetos">
+        <thead>
+            <tr>
+                <th>Nome do Projeto</th>
+                <th>Localização</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
         <tbody>
             {% if projetos %}
                 {% for projeto in projetos %}
                     <tr>
                         <td class="nome-projeto">{{ projeto.name }}</td>
                         <td class="localizacao-projeto">{{ projeto.cidade }}, {{ projeto.estados }}</td>
-
                         <td>
                             <div class="availability">
                                 {% if projeto.ativo %}
@@ -52,11 +59,15 @@
                                 {% endif %}
                             </div>
                         </td>
+                        <td>
+                            <!-- Botão para visualizar o projeto -->
+                            <a href="{% url 'visualizar_projeto' id=projeto.id %}" class="btn btn-info">Visualizar</a>
+                        </td>
                     </tr>
                 {% endfor %}
             {% else %}
                 <tr>
-                    <td class="mensagem-vazio">😔 Nenhum projeto encontrado. 😔</td>
+                    <td colspan="4" class="mensagem-vazio">😔 Nenhum projeto encontrado. 😔</td>
                 </tr>
             {% endif %}
         </tbody>

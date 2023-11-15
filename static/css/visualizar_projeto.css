@@ -1,0 +1,43 @@
+/* General styles for the project details */
+.project-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    width: 60%;
+    margin: 0 auto;
+    color: #fff;
+    background: #381635;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-details p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    background-color: #4e345a;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.project-details p label {
+    font-weight: bold;
+    display: inline-block;
+    min-width: 100px;
+}
+
+/* Specific styles for the 'Active' status of the project */
+.project-details .project-active {
+    font-weight: bold;
+    color: #00e676; /* Green when active */
+}
+
+.project-details .project-inactive {
+    font-weight: bold;
+    color: #ff3d00; /* Red when not active */
+}
