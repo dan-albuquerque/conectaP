@@ -1,7 +1,9 @@
 # Conecta +
 
 O “Conecta +”, irá servir como o facilitador de comunicações e organizações de projetos dos Caçadores de Bons Exemplos. 
+
 Ele vai funcionar como uma plataforma de gerência dos caçadores onde será possível organizar contatos, conversas e informações de projetos e eventos diversos dos caçadores, aperfeiçoando a situação atual deles. 
+
 Além disso, para amenizar a questão de resistência a novas tecnologia, planejamos implementar uma Inteligência Artificial que, através de um chatbot via whatsapp, fará o cadastramento e atualizações das informações de projetos ou de voluntários, a IA mandará as informações que ele recebeu do whatsapp para um banco de dados e essas informações serão organizadas no site de gerência de forma organizada e intuitiva para os voluntários dos caçadores e gestores dos Caçadores de Bons Exemplos.
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
