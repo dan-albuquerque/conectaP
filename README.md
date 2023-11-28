@@ -6,10 +6,12 @@ Ele vai funcionar como uma plataforma de gerência dos caçadores onde será pos
 
 Além disso, para amenizar a questão de resistência a novas tecnologia, planejamos implementar uma Inteligência Artificial que, através de um chatbot via whatsapp, fará o cadastramento e atualizações das informações de projetos ou de voluntários, a IA mandará as informações que ele recebeu do whatsapp para um banco de dados e essas informações serão organizadas no site de gerência de forma organizada e intuitiva para os voluntários dos caçadores e gestores dos Caçadores de Bons Exemplos.
 
-![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
-lembra de usar os comandos:<br>
+<br>![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
+
+
+<br>Lembrar de usar os comandos:<br>
 
 # venv
 virtualenv venv<br>
