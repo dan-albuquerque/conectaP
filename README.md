@@ -11,21 +11,48 @@ Além disso, para amenizar a questão de resistência a novas tecnologia, planej
 
 
 
-<br>Lembrar de usar os comandos:<br>
+# Tutorial: Como rodar o nosso Projeto 
 
-# venv
-virtualenv venv<br>
-venv\Scripts\Activate<br>
+Este tutorial fornecerá instruções detalhadas sobre como configurar o ambiente, instalar as dependências e rodar o projeto Django. Certifique-se de seguir cada passo cuidadosamente.
 
+##  Configurando o Ambiente Virtual
 
-# Baixar os pacotes
-pip install -r requirements.txt<br>
+Certifique-se de ter o Python e o pip instalados. Em seguida, siga os passos abaixo:
 
+## Instalando o ambiente virtual(venv)
+pip install virtualenv
 
-# Banco de dados
-python manage.py makemigrations<br>
-python manage.py migrate (se precisar)<br>
+## Criando e ativando o Ambiente Virtual (No diretório do seu projeto)
+virtualenv venv
 
+## Ativando a venv
+### No Windows
+venv\Scripts\activate
+
+### No Linux/Mac
+source venv/bin/activate
+
+O prompt de comando ou terminal agora deve exibir (venv) indicando que o ambiente virtual está ativado.
+
+## Instalando Dependências
+Certifique-se de estar com o ambiente virtual ativado. Em seguida, instale as dependências do projeto:
+
+pip install -r requirements.txt
+
+## Configurando o Banco de Dados 
+Execute as migrações para configurar o banco de dados:
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+## Rodando o Projeto
+Agora, você está pronto para iniciar o servidor Django. Certifique-se de estar no diretório do projeto e execute:
+
+python manage.py runserver
+
+Isso iniciará o servidor de desenvolvimento. Abra o navegador e acesse http://127.0.0.1:8000/ para visualizar o projeto!
+Qualquer duvida só procurar algum dos integrantes do grupo!
 
 # Colaboradores
 
