@@ -10,7 +10,7 @@
         <p>MURAL DE ATIVIDADES</p>
     </div>
 
-    <form method="post" action="{% url 'home' %}">
+    <form id="form-atividade" method="post" action="{% url 'home' %}">
         {% csrf_token %}
         <div class="classe-atividade">
             <input class="atividade" type="text" name="nova_atividade_nome" placeholder="Nome da atividade" required>

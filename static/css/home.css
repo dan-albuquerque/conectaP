@@ -96,14 +96,17 @@ div.frase_inicial h1{
     display: none;
 }
 
-form {
+#form-atividade {
     display: flex;
-    width: 5%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 50%;
 }
 
 .classe-atividade{
     width: 80%;
-    
+    padding: 1rem;
 }
 
 .atividade{
