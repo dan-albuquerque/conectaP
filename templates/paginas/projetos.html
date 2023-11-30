@@ -27,29 +27,17 @@
       
         <input type="submit" value="Filtrar">    
     </form>
-    
-    <div class="botao-cadastro-projeto">
-        <form action="{% url 'cadastro_projetos' %}" method="GET">
-            <input type="submit" value="Cadastrar" id="botao-cadastro_projeto" class="botao-cadastro-projeto">
-        </form>
-    </div>
+
     
 
     <table class="tabela_projetos">
-        <thead>
-            <tr>
-                <th>Nome do Projeto</th>
-                <th>Localização</th>
-                <th>Status</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
+        
         <tbody>
             {% if projetos %}
                 {% for projeto in projetos %}
                     <tr>
                         <td class="nome-projeto">{{ projeto.name }}</td>
-                        <td class="localizacao-projeto">{{ projeto.cidade }}, {{ projeto.estados }}</td>
+                        <td class="localizacao-projeto"> {{ projeto.estados }}</td>
                         <td>
                             <div class="availability">
                                 {% if projeto.ativo %}
@@ -59,9 +47,8 @@
                                 {% endif %}
                             </div>
                         </td>
-                        <td>
-                            <!-- Botão para visualizar o projeto -->
-                            <a href="{% url 'visualizar_projeto' id=projeto.id %}" class="btn btn-info">Visualizar</a>
+                        <td>Visualizar
+                            <a href="{% url 'visualizar_projeto' id=projeto.id %}" class="Visualizar-projeto"></a>
                         </td>
                     </tr>
                 {% endfor %}
