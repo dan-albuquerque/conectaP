@@ -35,6 +35,12 @@ div.body-projetos h1{
     margin: 5px;
 }
 
+.Visualizar-projeto {
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: none;
+}
+
 .dot {
     width: 17px;
     height: 17px;
@@ -67,6 +73,7 @@ table.tabela_projetos td {
         border-bottom-right-radius: 6px;
         border-right: 1px solid #fff;
     }
+
 }
 
 .green {
