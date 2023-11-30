@@ -73,3 +73,12 @@ class Message(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_messages')
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+
+class Atividade(models.Model):
+    usuario_atribuido = models.ForeignKey(User, on_delete=models.CASCADE)
+    nome = models.CharField(max_length=100)
+    descricao = models.TextField(max_length=500, blank=True, null=True)
+
+
+    def __str__(self):
+        return self.nome

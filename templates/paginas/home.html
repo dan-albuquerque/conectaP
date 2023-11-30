@@ -10,127 +10,39 @@
         <p>MURAL DE ATIVIDADES</p>
     </div>
 
+    <form method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+        <div class="classe-atividade">
+            <input class="atividade" type="text" name="nova_atividade_nome" placeholder="Nome da atividade" required>
+        </div>
+
+        <div>
+            <input class="adicionar-atividade" type="submit" value="Adicionar atividade">
+        </div>
+        
+    </form>
+
+    {% for atividade in atividades %}
     <div class="balao-entrevista">
-        <p>Documentar projeto Y...</p>
+        <p>{{ atividade.nome }}</p>
         <div class="opcoes-entrevista">
             <div class="opcao-gaveta" onclick="toggleGaveta(this)">
-                <p>Opções</p>
+                <p>{{atividade.usuario_atribuido}}</p>
                 <div class="gaveta hidden">
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Opção 1"> Opção 1
-                    </label>
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Opção 2"> Opção 2
-                    </label>
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Opção 3"> Opção 3
-                    </label>
+
                 </div>
             </div>
         </div>
     </div>
+    {% endfor %}
 
-    <div class="balao-entrevista">
-        <p>Responder projeto X...</p>
-        <div class="opcoes-entrevista">
-            <div class="opcao-gaveta" onclick="toggleGaveta(this)">
-                <p>Opções</p>
-                <div class="gaveta hidden">
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação 1"> Ação 1
-                    </label>
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação 2"> Ação 2
-                    </label>
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação 3"> Ação 3
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
+    <script>
+        function toggleGaveta(element) {
+            const gaveta = element.querySelector('.gaveta');
+            gaveta.classList.toggle('show');
+        }
+    </script>
 
-    <div class="balao-entrevista">
-        <p>Contactar Voluntário Z ...</p>
-        <div class="opcoes-entrevista">
-            <div class="opcao-gaveta" onclick="toggleGaveta(this)">
-                <p>Opções</p>
-                <div class="gaveta hidden">
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação A"> Ação A
-                    </label>
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação B"> Ação B
-                    </label>
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação C"> Ação C
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="balao-entrevista">
-        <p>Recrutar N voluntários para ...</p>
-        <div class="opcoes-entrevista">
-            <div class="opcao-gaveta" onclick="toggleGaveta(this)">
-                <p>Opções</p>
-                <div class="gaveta hidden">
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação A"> Ação A
-                    </label>
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação B"> Ação B
-                    </label>
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação C"> Ação C
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="balao-entrevista">
-        <p>Atualizar roteiro de viagem ...</p>
-        <div class="opcoes-entrevista">
-            <div class="opcao-gaveta" onclick="toggleGaveta(this)">
-                <p>Opções</p>
-                <div class="gaveta hidden">
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação A"> Ação A
-                    </label>
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação B"> Ação B
-                    </label>
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação C"> Ação C
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="balao-entrevista">
-        <p>Marcar entrevista com ...</p>
-        <div class="opcoes-entrevista">
-            <div class="opcao-gaveta" onclick="toggleGaveta(this)">
-                <p>Opções</p>
-                <div class="gaveta hidden">
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação A"> Ação A
-                    </label>
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação B"> Ação B
-                    </label>
-                    <label>
-                        <input type="checkbox" class="opcao-checkbox" value="Ação C"> Ação C
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Adicione mais balões conforme necessário -->
 
 </div>
 

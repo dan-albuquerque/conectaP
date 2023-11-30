@@ -16,6 +16,7 @@ from .daos.usuarioDAO import UsuarioDAO
 from .daos.cacadorDAO import CacadorDAO
 from .daos.voluntarioDAO import VoluntarioDAO
 from .daos.messageDAO import MessageDAO
+from .daos.atividadeDAO import AtividadeDAO
 from django.shortcuts import get_object_or_404
 from .models import Projeto
 
@@ -25,7 +26,16 @@ def teste(request):
 
 @login_required(login_url='/login/')
 def home(request):
-    return render(request, 'paginas/home.html')
+    atividadeDAO = AtividadeDAO()
+    atividades = atividadeDAO.obterTodasAtividades()
+    if request.method == 'POST':
+
+        nova_atividade_nome = request.POST.get('nova_atividade_nome', '')
+        if nova_atividade_nome:
+            atividadeDAO.criarAtividade(usuario_atribuido=request.user, nome=nova_atividade_nome, descricao='')
+            return redirect('home')
+    context = {'atividades': atividades}
+    return render(request, 'paginas/home.html', context)
 
 @login_required(login_url='/login/')
 def projetos(request):
