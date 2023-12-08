@@ -1,3 +1,15 @@
+<p align="center">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/dan-albuquerque/conectaP">
+
+  <a href="https://github.com/dan-albuquerque/conectaP/commits/main">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/dan-albuquerque/conectaP/main">
+  </a>
+
+   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+
+</p>
+
 # Conecta +
 
 O “Conecta +”, irá servir como o facilitador de comunicações e organizações de projetos dos Caçadores de Bons Exemplos. 
@@ -7,7 +19,7 @@ Ele vai funcionar como uma plataforma de gerência dos caçadores onde será pos
 Além disso, para amenizar a questão de resistência a novas tecnologia, planejamos implementar uma Inteligência Artificial que, através de um chatbot via whatsapp, fará o cadastramento e atualizações das informações de projetos ou de voluntários, a IA mandará as informações que ele recebeu do whatsapp para um banco de dados e essas informações serão organizadas no site de gerência de forma organizada e intuitiva para os voluntários dos caçadores e gestores dos Caçadores de Bons Exemplos.
 
 
-<br>![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+<br>![Badge Concluído](http://img.shields.io/static/v1?label=STATUS&message=CONCLU%C3%8DDO&color=BLUE&style=for-the-badge)
 
 
 
